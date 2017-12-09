@@ -14,14 +14,13 @@ def verify():
     return 'verification token mismatch', 403
   else:
     return request.args.get('hub.challenge', 'Error shovon'), 200
-  '''
-  if request.args.get('hub.mode' == 'subscribe' and \
-                      request.args.get('hub.challenge')):
-    if not request.args.get('hub.verify_token') == webhook_verify_token:
-      return 'verification token mismatch', 403
-    return request.args['hub.challenge'], 200
-  '''
   return 'hello mate', 200
+
+@app.route('/', methods = ['POST']):
+def post_message():
+  data = request.get_json()
+  print(data)
+  return "ok", 200
 
 if __name__ == '__main__':
   app.run(debug=True)
