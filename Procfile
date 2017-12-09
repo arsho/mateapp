@@ -1,1 +1,1 @@
-web: gunicorn matetapp:app
+web: gunicorn mateapp:app
