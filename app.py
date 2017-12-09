@@ -16,7 +16,7 @@ def verify():
     return request.args.get('hub.challenge', 'Error shovon'), 200
   return 'hello mate', 200
 
-@app.route('/', methods = ['POST']):
+@app.route('/', methods = ['POST'])
 def post_message():
   try:
     data = request.get_json()
