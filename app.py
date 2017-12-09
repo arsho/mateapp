@@ -3,7 +3,7 @@ import requests
 import json
 import traceback
 import random
-import os
+import os, sys
 
 webhook_verify_token = os.environ.get('webhook_verify_token', None)
 app = Flask(__name__)
@@ -21,6 +21,7 @@ def post_message():
   try:
     data = request.get_json()
     print(data)
+    sys.stdout.flush()
     return "ok", 200
   except Exception as e:
     print(str(e))
