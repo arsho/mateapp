@@ -18,9 +18,12 @@ def verify():
 
 @app.route('/', methods = ['POST']):
 def post_message():
-  data = request.get_json()
-  print(data)
-  return "ok", 200
+  try:
+    data = request.get_json()
+    print(data)
+    return "ok", 200
+  except Exception as e:
+    print(str(e))
 
 if __name__ == '__main__':
   app.run(debug=True)
