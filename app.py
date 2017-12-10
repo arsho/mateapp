@@ -4,13 +4,18 @@ import json
 import traceback
 import random
 import os, sys
+from pymessenger import Bot
 
 webhook_verify_token = os.environ.get('webhook_verify_token', None)
+page_token = os.environ.get('page_token', None)
+
+bot = Bot(page_token)
+
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def verify():
-  if not request.args.get('hub.verify_token') == webhook_verify_token:
+  if not request.args.get('hub.verify_token') == page_token:
     return 'verification token mismatch', 403
   else:
     return request.args.get('hub.challenge', 'Error shovon'), 200
@@ -22,6 +27,28 @@ def post_message():
     data = request.get_json()
     print(data)
     sys.stdout.flush()
+
+    if data['object'] == 'page':
+      for entry in data['entry']:
+        for messaging_event in entry['messaging']:
+
+          # IDs
+          sender_id = messaging_event['sender']['id']
+          recipient_id = messaging_event['recipient']['id']
+
+          if messaging_event.get('message'):
+            # Extracting text message
+            if 'text' in messaging_event['message']:
+              messaging_text = messaging_event['message']['text']
+            else:
+              messaging_text = 'no text'
+
+            # Echo
+            response = messaging_text
+            if response == 'hi':
+              response = 'hello'
+            bot.send_text_message(sender_id, response)
+    
     return "ok", 200
   except Exception as e:
     print(str(e))
