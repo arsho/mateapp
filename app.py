@@ -39,7 +39,7 @@ def post_message():
           if messaging_event.get('message'):
             # Extracting text message
             if 'text' in messaging_event['message']:
-              messaging_text = messaging_event['message']['text']
+              messaging_text = "You said: "+messaging_event['message']['text']
             else:
               messaging_text = 'no text'
 
