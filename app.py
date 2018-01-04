@@ -6,12 +6,15 @@ import random
 import os, sys
 from pymessenger import Bot
 
+from WitApi import WitApi
+
 webhook_verify_token = os.environ.get('webhook_verify_token', None)
 page_token = os.environ.get('page_token', None)
 
 bot = Bot(page_token)
 
 app = Flask(__name__)
+witApi = WitApi()
 
 @app.route('/', methods = ['GET'])
 def verify():
@@ -37,16 +40,19 @@ def post_message():
           recipient_id = messaging_event['recipient']['id']
 
           if messaging_event.get('message'):
+            user_message = None
             # Extracting text message
             if 'text' in messaging_event['message']:
-              messaging_text = "You said: "+messaging_event['message']['text']
+              user_message = messaging_event['message']['text']
             else:
-              messaging_text = 'no text'
+              user_message = 'no text'
 
             # Echo
-            response = messaging_text
-            if response == 'hi':
+            response = None
+            if user_message == 'hi':
               response = 'hello'
+            else:
+              response = witApi.handle_user_message(user_message)
             bot.send_text_message(sender_id, response)
     
     return "ok", 200
