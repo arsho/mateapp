@@ -52,7 +52,8 @@ def post_message():
             if user_message == 'hi':
               response = 'hello'
             else:
-              response = witApi.handle_user_message(user_message)
+              responses = witApi.handle_user_message(user_message)
+              response = ", ".join(responses)
             bot.send_text_message(sender_id, response)
     
     return "ok", 200
