@@ -7,6 +7,7 @@ import os, sys
 from pymessenger import Bot
 
 from WitApi import WitApi
+witApi = WitApi()
 
 webhook_verify_token = os.environ.get('webhook_verify_token', None)
 page_token = os.environ.get('page_token', None)
@@ -14,7 +15,6 @@ page_token = os.environ.get('page_token', None)
 bot = Bot(page_token)
 
 app = Flask(__name__)
-witApi = WitApi()
 
 @app.route('/', methods = ['GET'])
 def verify():
