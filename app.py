@@ -47,8 +47,7 @@ def post_message():
             else:
               user_message = 'no text'
 
-            # Echo
-            response = None
+            response = "no text"
             responses = witApi.handle_user_message(user_message)
             response = ", ".join(responses)
             bot.send_text_message(sender_id, response)
