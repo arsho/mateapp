@@ -3,7 +3,7 @@ import requests
 import json
 import traceback
 import random
-import os, sys
+import os, sysGITW
 from pymessenger import Bot
 
 from WitApi import WitApi
@@ -49,11 +49,8 @@ def post_message():
 
             # Echo
             response = None
-            if user_message == 'hi':
-              response = 'hello'
-            else:
-              responses = witApi.handle_user_message(user_message)
-              response = ", ".join(responses)
+            responses = witApi.handle_user_message(user_message)
+            response = ", ".join(responses)
             bot.send_text_message(sender_id, response)
     
     return "ok", 200

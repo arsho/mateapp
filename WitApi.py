@@ -19,6 +19,13 @@ class WitApi(object):
             bot_response = 'We are proficient at '+value
         elif entity == 'service_type':
             bot_response = 'We are providing '+value+' services to many companies around the world'
+        elif entity == 'contact_information':
+            bot_response = "You can send an email to datamate.ws@gmail.com with your query."+\
+                           " You can also call us at +8801731246426"
+        elif entity == 'wit/bye':
+            bot_response = 'Goodbye.'
+        elif entity == 'wit/greetings':
+            bot_response = 'Hello!'
         return bot_response
 
     def utilize_wit_data(self, wit_data):
