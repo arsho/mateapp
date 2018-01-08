@@ -3,7 +3,7 @@ import requests
 import json
 import traceback
 import random
-import os, sysGITW
+import os, sys
 from pymessenger import Bot
 
 from WitApi import WitApi
