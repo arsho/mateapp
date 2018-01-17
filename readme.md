@@ -6,8 +6,6 @@ Mateapp
 [![Codecov](https://codecov.io/github/arsho/dictmate/coverage.svg?branch=master)](https://codecov.io/github/arsho/dictmate)
 
 
-![Final List](Screenshot/demo_original_crop.png)
-
 . See live [https://mateapp.herokuapp.com/](https://mateapp.herokuapp.com/)
 
 ## Software Requirements
