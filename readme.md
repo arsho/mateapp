@@ -1,10 +1,7 @@
 Mateapp
 ========
 
-[![Build Status](https://travis-ci.org/arsho/dictmate.svg?branch=master)](https://travis-ci.org/arsho/dictmate)
-[![Size](https://img.shields.io/github/size/arsho/dictmate/app.py.svg?)](https://github.com/arsho/dictmate/)
-[![Codecov](https://codecov.io/github/arsho/dictmate/coverage.svg?branch=master)](https://codecov.io/github/arsho/dictmate)
-
+[![Size](https://img.shields.io/github/size/arsho/mateapp/app.py.svg?)](https://github.com/arsho/mateapp/)
 
 . See live [https://mateapp.herokuapp.com/](https://mateapp.herokuapp.com/)
 
@@ -41,16 +38,4 @@ The following environment is used to develop the application:
 
 		$ python app.py
 
-		
-### Unit testing
-
-- Activate virtual environment (if not activated)
-
-		$ venv\Scripts\activate.bat
-
-- Run the `tests.py`
-
-		$ python tests.py
-
-![Unittests](Screenshot/unittests.png)		
 		
